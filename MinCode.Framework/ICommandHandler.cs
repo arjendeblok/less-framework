@@ -13,6 +13,6 @@
     /// <param name="command">the command to execute</param>
     /// <param name="ct">cancel token</param>
     /// <returns>a command result</returns>
-    Task<CommandResult> ExecuteAsync(TCommand command, CancellationToken ct = default);
+    Task<CommandResult> HandleAsync(TCommand command, CancellationToken ct = default);
   }
 }
