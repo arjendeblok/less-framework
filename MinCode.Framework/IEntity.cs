@@ -5,6 +5,7 @@
   /// </summary>
   public interface IEntity
   {
+    int Id { get; }
   }
 
   /// <summary>
