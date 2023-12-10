@@ -9,4 +9,11 @@
   public interface ICommand
   {
   }
+  
+  /// <summary>
+  /// Tag to see this (record) class as a command for one existing entity
+  /// </summary>
+  public interface IInstanceCommand : ICommand {
+    int Id { get; }
+  }
 }
