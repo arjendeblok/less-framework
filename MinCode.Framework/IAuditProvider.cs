@@ -1,14 +1,6 @@
 ﻿namespace MinCode.Framework
 {
   /// <summary>
-  /// Result of an operation
-  /// </summary>
-  public enum AuditResult
-  {
-    Handled, Unauthenticated, Unauthorized, Failed
-  }
-
-  /// <summary>
   /// Interface to an audit provider
   /// </summary>
   public interface IAuditProvider
@@ -27,8 +19,12 @@
     /// <param name="user">User initiated the command</param>
     /// <param name="command">The command executed</param>
     /// <returns></returns>
-    Task AuditAsync<TCommand>(AuditResult result,
+    Task AuditAsync<TCommand>(CommandResultStatus status,
       string message, string user, TCommand? command)
+      where TCommand : class, ICommand;
+
+    Task AuditAsync<TCommand, TAggregateRoot>(CommandResultStatus status,
+      string message, string user, TCommand? command, TAggregateRoot? entity)
       where TCommand : class, ICommand;
   }
 }
